@@ -8,9 +8,9 @@ const gastoListado = document.querySelector("#gastos ul");
 //eventos
 
 eventListeners();
+
 function eventListeners(){
     document.addEventListener("DOMContentLoaded", preguntarPresupuesto);
-
     formulario.addEventListener("submit", agregarGasto);
 }
 
@@ -19,20 +19,20 @@ function eventListeners(){
 
 //clases(se reservan para los objetos)
 class Presupuesto{
-    constructor(presupuesto){
-        this.presupuesto = Number(presupuesto);
-        this.restante = Number(presupuesto);
+    constructor(varTotal){
+        this.total = Number(varTotal);
+        this.restante = Number(varTotal);
         this.gastos = [];
     }
 }
 
 class UI{
-    insertarPresupuesto(cantidad){
+    insertarPresupuesto(objPresupuesto){
         //extrayendo los valores
-        const {presupuesto, restante} = cantidad;
+        const {total, restante} = objPresupuesto;
 
         //agregar al HTML
-        document.querySelector("#total").textContent = presupuesto;
+        document.querySelector("#total").textContent = total;
         document.querySelector("#restante").textContent = restante;
     }
 
@@ -44,22 +44,22 @@ class UI{
 
 //instanciar
 const ui = new UI();
-let presupuesto;
+let objPresupuesto;
 
 
 //funciones
 
 function preguntarPresupuesto(){
-    const presupuestoUsuario = prompt("¿Cuál es tu presupuesto?");
-    // console.log(parseFloat(presupuestoUsuario));
-    if(presupuestoUsuario === "" || presupuestoUsuario === null || isNaN(presupuestoUsuario) || presupuestoUsuario <= 0){
+    const varTotal = prompt("¿Cuál es tu presupuesto total?");
+    // console.log(parseFloat(total));
+    if(varTotal === "" || varTotal === null || isNaN(varTotal) || varTotal <= 0){
         window.location.reload();//esto es para q vuelva a preguntar hasta q se ingrese un ppto válido, q sea un número, mayor o igual a 0.
     }
     //presupuesto válido
-    presupuesto = new Presupuesto(presupuestoUsuario);
-    console.log(presupuesto);
+    objPresupuesto = new Presupuesto(varTotal);
+    console.log(objPresupuesto);
 
-    ui.insertarPresupuesto(presupuesto);
+    ui.insertarPresupuesto(objPresupuesto);
 }
 
 //añade gastos
