@@ -1,0 +1,101 @@
+<html>
+    <div id="divMensaje"></div>
+</html>
+
+
+<script>
+    //test2('Hola Max');
+    
+    function test1(){
+        alert('hola')
+    }
+
+    function test2(strMensaje){
+        alert(strMensaje)
+    }
+
+    //test3(1, 2);
+    function test3(intA, intB){
+        let suma = intA + intB
+        alert(suma)
+    }
+
+  
+    class Rectangulo {
+        constructor(ancho, alto) {
+            this.ancho = ancho;
+            this.alto = alto;
+        }
+    }
+
+    //Ejemplo función que recibe un objeto y genera hace algo (alert)
+    //test4();
+    function test4() {
+        //debugger;
+        const rectangulo1 = new Rectangulo(4, 3);
+        areaRectangulo1(rectangulo1);        
+    }
+
+    function areaRectangulo1(objRectangulo) {
+        alert(objRectangulo.alto * objRectangulo.ancho)
+    }
+
+
+    //Ejemplo función que recibe un objeto y devuelve un valor (area)
+    //test5();
+    function test5() {
+        //debugger;
+        const rectangulo2 = new Rectangulo(5, 2);
+        let area = areaRectangulo2(rectangulo2);
+        alert(area);
+    }
+
+    function areaRectangulo2(objRectangulo) {
+
+        let alto = objRectangulo.alto
+        let ancho = objRectangulo.ancho
+
+        return alto * ancho
+    }
+
+
+    //Ejemplo función que recibe un objeto y devuelve un valor (area)
+    //test6();
+    function test6() {
+        //debugger;
+        const rectangulo3 = new Rectangulo(6, 3);
+        let area = areaRectangulo3(rectangulo3);
+        alert(area);
+    }
+
+    function areaRectangulo3(objRectangulo) {
+        
+        //let alto = objRectangulo.alto
+        //let ancho = objRectangulo.ancho
+        const {alto, ancho} = objRectangulo;
+
+        return alto * ancho
+    }
+
+    //test7('Hola Susana');
+    function test7(strMensaje) {
+        //document.getElementById("divMensaje").innerHTML = strMensaje
+        document.getElementById("divMensaje").textContent = strMensaje
+    }
+
+    //User Interface
+    class UI {
+
+        establecerMensaje(strMensaje) {        
+            document.getElementById("divMensaje").textContent = strMensaje
+        }
+        
+    }
+
+    test8();
+    function test8(){
+        const ui = new UI();
+        ui.establecerMensaje('Hola Susana 3')
+    }
+
+</script>
